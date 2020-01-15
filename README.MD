@@ -7,6 +7,7 @@
 - Обработка изображений ([ImageMin](https://github.com/imagemin/imagemin), [MozJPEG](https://github.com/mozilla/mozjpeg))
 - Дублирование изображений в формате ```.webp```
 - Создание favicon
+- Валидация HTML кода [Nu Html Checker](https://validator.w3.org/nu/)
 
 ## Установка
 **Для работы сборки требуется установленный [NodeJS](https://nodejs.org/)**

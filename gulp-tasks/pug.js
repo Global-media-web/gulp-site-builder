@@ -5,6 +5,7 @@ const gulp = require('gulp'),
       yargs = require('yargs'),
       gulpIf = require('gulp-if'),
       replace = require('gulp-replace'),
+      htmlValidator = require('gulp-w3c-html-validator'),
       {paths} = require('../gulpfile');
 
 const isProductionMode = yargs.argv.mode === 'production';
@@ -17,6 +18,8 @@ gulp.task('pug', () =>
         }))
         .pipe(gulpIf(isProductionMode, replace(/(src="\/?js\/.+)(\.js)/g, (match, p1, p2) => `${p1}.min${p2}`)))
         .pipe(gulpIf(isProductionMode, replace(/(href="\/?css\/.+)(\.css)/g, (match, p1, p2) => `${p1}.min${p2}`)))
+        .pipe(htmlValidator())
+        .pipe(htmlValidator.reporter())
         .pipe(gulp.dest(paths.output.pug))
         .pipe(browserSync.stream())
 );
